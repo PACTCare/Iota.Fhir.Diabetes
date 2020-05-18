@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:dataForm="clr-namespace:Telerik.XamarinForms.Input.DataForm;assembly=Telerik.XamarinForms.Input"
+             x:Class="Pact.App.Core.Views.DetailPages.PatientDetailPage">
+  <Frame Style="{DynamicResource BorderedFrame}" Margin="15">
+      <input:RadDataForm x:Name="PatientData">
+        <input:RadDataForm.GroupLayoutDefinition>
+          <dataForm:DataFormGroupGridLayoutDefinition />
+        </input:RadDataForm.GroupLayoutDefinition>
+        <input:RadDataForm.GroupHeaderStyle>
+          <dataForm:DataFormGroupHeaderStyle Background="#FFFFFF" 
+                                            Foreground="#52658D" 
+                                            TextAlignment="Start" />
+        </input:RadDataForm.GroupHeaderStyle>
+        <input:RadDataForm.EditorStyle>
+          <dataForm:DataFormEditorStyle HeaderFontSize="16" HeaderForeground="#6D91C7"/>
+          </input:RadDataForm.EditorStyle>
+      </input:RadDataForm>
+    </Frame>
+</ContentPage>

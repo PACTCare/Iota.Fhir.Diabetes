@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                    x:Class="Pact.App.Core.Resources.Themes.DefaultTheme">
+
+  <Color x:Key="TextColor">#6D91C7</Color>
+  <Color x:Key="NavigationBarTextColor">#6D91C7</Color>
+  <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+
+  <Style x:Key="Label20" TargetType="Label">
+    <Setter Property="FontSize" Value="20" />
+    <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    <Setter Property="FontFamily" Value="Roboto" />
+  </Style>
+
+  <Style x:Key="Label18" TargetType="Label">
+    <Setter Property="FontSize" Value="18" />
+    <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    <Setter Property="FontFamily" Value="Roboto" />
+  </Style>
+
+  <Style x:Key="Label16" TargetType="Label">
+    <Setter Property="FontSize" Value="16" />
+    <Setter Property="TextColor" Value="{StaticResource TextColor}" />
+    <Setter Property="FontFamily" Value="Roboto" />
+  </Style>
+
+  <Style x:Key="BorderedFrame" TargetType="Frame">
+    <Setter Property="BorderColor" Value="#52658D" />
+    <Setter Property="CornerRadius" Value="12" />
+    <Setter Property="HasShadow" Value="True" />
+  </Style>
+
+</ResourceDictionary>

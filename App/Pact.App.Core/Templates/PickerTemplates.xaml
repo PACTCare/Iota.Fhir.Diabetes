@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:Pact.App.Core.Templates;assembly=Pact.App.Core"
+             x:Class="Pact.App.Core.Templates.PickerTemplates">
+
+  <DataTemplate x:Key="SuggestedActionTemplate">
+    <ScrollView Orientation="Horizontal" 
+                BackgroundColor="#f5f5f5">
+      <StackLayout 
+        BindableLayout.ItemsSource="{Binding Cards}"
+        Orientation="Horizontal"
+        BackgroundColor="White" 
+        Margin="0"
+        Padding="8,0,0,0" >
+        <BindableLayout.ItemTemplate>
+          <DataTemplate>
+            <Button TextColor="#FFFFFF" Text="{Binding Text}" Command="{Binding Command}" BackgroundColor="#52658D" FontFamily="Roboto Light" CornerRadius="12" BorderWidth="1" HeightRequest="40"/>
+          </DataTemplate>
+        </BindableLayout.ItemTemplate>
+      </StackLayout>
+    </ScrollView>
+  </DataTemplate>
+
+  <templates:PickerTemplateSelector x:Key="PickerTemplateSelector" SuggestedActionTemplate="{StaticResource SuggestedActionTemplate}" />
+</ResourceDictionary>

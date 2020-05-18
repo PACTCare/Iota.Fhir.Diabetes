@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:input="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:dataControls="clr-namespace:Telerik.XamarinForms.DataControls;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:listView="clr-namespace:Telerik.XamarinForms.DataControls.ListView;assembly=Telerik.XamarinForms.DataControls"
+             xmlns:themes="clr-namespace:Pact.App.Core.Resources.Themes;assembly=Pact.App.Core"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="Pact.App.Core.Views.DetailPages.SharedDataOverview">
+  <ContentPage.Resources>
+    <themes:DefaultTheme />
+  </ContentPage.Resources>
+  <primitives:RadBusyIndicator AnimationContentHeightRequest="50"
+                               AnimationContentWidthRequest="50"
+                               AnimationContentColor="#6d91c7"
+                               IsBusy="{Binding IsBusy}" >
+    <StackLayout>
+      <input:RadButton Text="Add new doctor" 
+                       WidthRequest="160" 
+                       HeightRequest="38"                                
+                       FontSize="Default" 
+                       FontFamily="Roboto"
+                       TextColor="#FFFFFF" 
+                       BackgroundColor="#52658D" 
+                       CornerRadius="12" 
+                       HorizontalContentAlignment="Center"
+                       Margin="12" 
+                       Clicked="AddDoctorClicked"/>
+      <dataControls:RadListView x:Name="DataSharesList" ItemsSource="{Binding MedicalInstitutions}" HeightRequest="500">
+        <dataControls:RadListView.ItemTemplate>
+          <DataTemplate>
+            <listView:ListViewTemplateCell>
+              <listView:ListViewTemplateCell.View>
+                <Grid Margin="6" HorizontalOptions="FillAndExpand" >
+                  <Frame Style="{DynamicResource BorderedFrame}">
+                    <Grid>
+                      <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                      </Grid.ColumnDefinitions>
+                      <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                        <RowDefinition Height="Auto"></RowDefinition>
+                      </Grid.RowDefinitions>
+                      <Label Grid.Row="0" Text="{Binding Name}" Style="{DynamicResource Label18}" />
+                      <input:RadButton Grid.Row="1"
+                                       WidthRequest="160" 
+                                       HeightRequest="38"                                
+                                       Text="Share Data" 
+                                       FontSize="Medium"
+                                       FontFamily="Roboto"
+                                       TextColor="#DB404F" 
+                                       BackgroundColor="#FFFFFF" 
+                                       BorderColor="#707070"
+                                       BorderThickness="1"
+                                       CornerRadius="12" 
+                                       HorizontalContentAlignment="Center"
+                                       Margin="12" 
+                                       Clicked="Button_OnClicked"
+                                       CommandParameter="{Binding .}" />
+                    </Grid>
+                  </Frame>
+                </Grid>
+              </listView:ListViewTemplateCell.View>
+            </listView:ListViewTemplateCell>
+          </DataTemplate>
+        </dataControls:RadListView.ItemTemplate>
+      </dataControls:RadListView>
+      <primitives:RadPopup.Popup>
+        <primitives:RadPopup x:Name="SharePopup"
+                                    IsModal="True"
+                                    Placement="Center"
+                                    OutsideBackgroundColor="#6F000000">
+          <primitives:RadBorder CornerRadius="8" 
+                                BackgroundColor="#FFFFFF">
+            <Grid Margin="12">
+              <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <dataControls:RadListView x:Name="SelectedSharesList" Grid.Row="0" SelectionMode="None" ItemsSource="{Binding SelectedInstitute.SharedContent}">
+                <dataControls:RadListView.ItemTemplate>
+                  <DataTemplate>
+                    <listView:ListViewTemplateCell>
+                      <listView:ListViewTemplateCell.View>
+                        <Grid Margin="6" HorizontalOptions="FillAndExpand" >
+                          <Frame Style="{DynamicResource BorderedFrame}">
+                            <Grid>
+                              <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                              </Grid.ColumnDefinitions>
+                              <primitives:RadCheckBox Grid.Column="0" IsChecked="{Binding IsShared}" />
+                              <Label Grid.Column="1" Text="{Binding DisplayText}" Style="{DynamicResource Label16}" />
+                            </Grid>
+                          </Frame>
+                        </Grid>
+                      </listView:ListViewTemplateCell.View>
+                    </listView:ListViewTemplateCell>
+                  </DataTemplate>
+                </dataControls:RadListView.ItemTemplate>
+              </dataControls:RadListView>
+              <input:RadButton 
+                  Grid.Row="1"
+                  WidthRequest="160" 
+                  HeightRequest="38"                                
+                  Text="OK" 
+                  FontSize="Default" 
+                  FontFamily="Roboto"
+                  TextColor="#FFFFFF" 
+                  BackgroundColor="#52658D" 
+                  CornerRadius="12" 
+                  HorizontalContentAlignment="Center"
+                  Margin="12" 
+                  Clicked="OkClicked"/>
+            </Grid>
+          </primitives:RadBorder>
+        </primitives:RadPopup>
+      </primitives:RadPopup.Popup>
+    </StackLayout>
+  </primitives:RadBusyIndicator>
+</ContentPage>

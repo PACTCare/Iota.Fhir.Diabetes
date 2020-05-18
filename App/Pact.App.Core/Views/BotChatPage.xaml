@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chatUi="clr-namespace:Telerik.XamarinForms.ConversationalUI;assembly=Telerik.XamarinForms.ConversationalUI"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="Pact.App.Core.Views.BotChatPage">
+  <primitives:RadBusyIndicator AnimationContentHeightRequest="50"
+                               AnimationContentWidthRequest="50"
+                               AnimationContentColor="#6d91c7"
+                               IsBusy="{Binding IsBusy}" >
+    <chatUi:RadChat x:Name="Chat" ItemsSource="{Binding Messages}" ItemTemplateSelector="{StaticResource ChatTemplateSelector}" BackgroundColor="White">
+      <chatUi:RadChat.Picker>
+        <chatUi:RadChatPicker Context="{Binding PickerContext}"
+                              IsVisible="{Binding IsPickerVisible}"
+                              TemplateSelector="{StaticResource PickerTemplateSelector}"
+                              IsOkButtonVisible="False"
+                              IsCancelButtonVisible="False"                                               
+                              BackgroundColor="White" />
+      </chatUi:RadChat.Picker>
+      <chatUi:RadChat.TypingIndicator>
+        <chatUi:TypingIndicator ItemsSource="{Binding TypingAuthors}" />
+      </chatUi:RadChat.TypingIndicator>
+    </chatUi:RadChat>
+  </primitives:RadBusyIndicator>
+</ContentPage>
+

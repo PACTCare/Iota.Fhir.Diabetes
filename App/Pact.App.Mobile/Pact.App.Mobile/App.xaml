@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:themes="clr-namespace:Pact.App.Core.Resources.Themes;assembly=Pact.App.Core"
+             xmlns:templates="clr-namespace:Pact.App.Core.Templates;assembly=Pact.App.Core"
+             x:Class="Pact.App.Mobile.App">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <themes:DefaultTheme />
+        <templates:ChatTemplates />
+        <templates:PickerTemplates />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+</Application>

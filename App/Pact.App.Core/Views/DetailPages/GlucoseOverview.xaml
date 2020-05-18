@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chart="clr-namespace:Telerik.XamarinForms.Chart;assembly=Telerik.XamarinForms.Chart"
+             xmlns:input="clr-namespace:Telerik.XamarinForms.Input;assembly=Telerik.XamarinForms.Input"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="Pact.App.Core.Views.DetailPages.GlucoseOverview">
+  <ContentPage.Content>
+    <StackLayout>
+      <Grid>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="500"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <chart:RadCartesianChart Grid.Row="0">
+          <chart:RadCartesianChart.HorizontalAxis>
+            <chart:DateTimeContinuousAxis MajorStepUnit="Hour" MajorStep="4" />
+          </chart:RadCartesianChart.HorizontalAxis>
+          <chart:RadCartesianChart.VerticalAxis>
+            <chart:NumericalAxis x:Name="VerticalAxis" Minimum="20" Maximum="300" MajorStep="40" />
+          </chart:RadCartesianChart.VerticalAxis>
+          <chart:RadCartesianChart.Series>
+            <chart:LineSeries ValueBinding="Value"
+                              CategoryBinding="DisplayTime"
+                              DisplayName="Blood glucose in mg/dl"
+                              ItemsSource="{Binding GlucoseData}" />
+          </chart:RadCartesianChart.Series>
+          <chart:RadCartesianChart.Annotations>
+            <chart:CartesianPlotBandAnnotation StrokeThickness="0"
+                                              Stroke="LightGreen"
+                                              Fill="#2F66FF33"
+                                              Axis="{x:Reference VerticalAxis}"
+                                              From="70"
+                                              To="180" />
+          </chart:RadCartesianChart.Annotations>
+        </chart:RadCartesianChart>
+        <Grid Grid.Row="1">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="Auto" />
+          </Grid.ColumnDefinitions>
+          <ImageButton Grid.Column="0" Source="tiny_arrow_left.png" WidthRequest="36" HeightRequest="36" BackgroundColor="Transparent" Clicked="SelectEarlierDayClicked" />
+          <DatePicker Grid.Column="1" 
+                      Format="D"
+                      Margin="30, 0, 0, 30"
+                      DateSelected="OnDateSelected" 
+                      Date="{Binding SelectedDate}" />
+          <ImageButton Grid.Column="2" Source="tiny_arrow_right.png" WidthRequest="36" HeightRequest="36" BackgroundColor="Transparent" Clicked="SelectNextDayClicked" />
+        </Grid>
+        <input:RadButton Grid.Row="2" 
+                         Text="{Binding ConsentText}" 
+                         WidthRequest="160" 
+                         HeightRequest="38"
+                         BorderThickness="3"
+                         FontSize="Default" 
+                         FontFamily="Roboto"
+                         TextColor="{Binding ConsentColor}" 
+                         BorderColor="#52658D" 
+                         BackgroundColor="White"
+                         CornerRadius="12" 
+                         HorizontalContentAlignment="Center"
+                         Margin="12" 
+                         Clicked="Button_OnClicked"/>
+      </Grid>
+    </StackLayout>
+  </ContentPage.Content>
+</ContentPage>

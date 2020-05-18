@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:templates="clr-namespace:Pact.App.Core.Templates;assembly=Pact.App.Core"
+             xmlns:abstractions="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             x:Class="Pact.App.Core.Templates.ChatTemplates">
+
+  <Style x:Key="MessageImageStyle" TargetType="Image">
+    <Setter Property="Source" Value="{Binding Author.Avatar}" />
+    <Setter Property="WidthRequest" Value="30" />
+    <Setter Property="HeightRequest" Value="30" />
+  </Style>
+
+  <DataTemplate x:Key="SentMessageTemplate">
+    <Grid Margin="0, 2, 10, 10" HorizontalOptions="End">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="*"></RowDefinition>
+      </Grid.RowDefinitions>
+      <Frame
+        Grid.Column="1"
+        Padding="10,8,10,8"
+        CornerRadius="12"
+        HasShadow="True"
+        BorderColor="#C6C6C6"
+        BackgroundColor="#52658D">
+        <Label TextColor="#FFFFFF" FontSize="16" HorizontalTextAlignment="Start" Text="{Binding Text}" FontFamily="Roboto Light"/>
+      </Frame>
+    </Grid>
+  </DataTemplate>
+
+  <DataTemplate x:Key="ReceivedMessageTemplate">
+    <Grid Margin="0, 2, 10, 10" HorizontalOptions="Start">
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"></ColumnDefinition>
+        <ColumnDefinition Width="*"></ColumnDefinition>
+      </Grid.ColumnDefinitions>
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto"></RowDefinition>
+      </Grid.RowDefinitions>
+      <abstractions:CircleImage
+        Grid.Column="0"
+        Style="{StaticResource MessageImageStyle}" />
+      <Frame
+        Grid.Column="1"
+        Padding="10,8,10,8"
+        CornerRadius="12"
+        HasShadow="True"
+        BorderColor="#C6C6C6"
+        BackgroundColor="#F5F5F5">
+        <Label TextColor="#52658D" FontSize="16" HorizontalTextAlignment="Start" Text="{Binding Text}" FontFamily="Roboto Light"/>
+      </Frame>
+    </Grid>
+  </DataTemplate>
+
+  <DataTemplate x:Key="MicrosoftCardHero">
+    <Frame
+        Margin="0, 2, 10, 10"
+        Padding="10,8,10,8"
+        CornerRadius="12"
+        HasShadow="True"
+        BorderColor="#C6C6C6"
+        BackgroundColor="#F5F5F5">
+      <Grid>
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+          <RowDefinition Height="Auto"></RowDefinition>
+          <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Image Grid.Row="0" Source="{Binding Context.ImageUri}" HeightRequest="150"></Image>
+        <Label Grid.Row="1" TextColor="#52658D" FontSize="16" HorizontalTextAlignment="Start" Text="{Binding Context.Description}" FontFamily="Roboto Light"/>
+      </Grid>
+    </Frame>
+  </DataTemplate>
+
+  <templates:ChatTemplateSelector x:Key="ChatTemplateSelector"
+                                        SentMessageTemplate="{StaticResource SentMessageTemplate}" 
+                                        ReceivedMessageTemplate="{StaticResource ReceivedMessageTemplate}"
+                                        MicrosoftCardHero="{StaticResource MicrosoftCardHero}"/>
+</ResourceDictionary>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:main="clr-namespace:Pact.App.Core.Views.Main;assembly=Pact.App.Core"
+             xmlns:views="clr-namespace:Pact.App.Core.Views;assembly=Pact.App.Core"
+             x:Class="Pact.App.Core.Views.Main.MasterDetailMainPageMaster"
+             Title="Menu"
+             Padding="0,40,0,0">
+  <StackLayout>
+    <ListView x:Name="listView" x:FieldModifier="public" HeightRequest="300">
+      <ListView.ItemsSource>
+        <x:Array Type="{x:Type main:MasterDetailMainPageMenuItem}">
+          <main:MasterDetailMainPageMenuItem Title="Florence" TargetType="{x:Type views:BotChatPage}" />
+          <main:MasterDetailMainPageMenuItem Title="Dashboard" TargetType="{x:Type views:DashboardPage}" />
+        </x:Array>
+      </ListView.ItemsSource>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Grid Padding="5,10">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="*" />
+              </Grid.ColumnDefinitions>
+              <Image Source="{Binding IconSource}" />
+              <Label FontSize="20" TextColor="#6D91C7" Grid.Column="1" Text="{Binding Title}" />
+            </Grid>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <StackLayout Orientation="Horizontal">
+      <Grid Padding="5,10">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="30"/>
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Image Source="" />
+        <Button Grid.Column="1" 
+                TextColor="#4286f4"
+                CornerRadius="10"
+                BorderColor="#4286f4"
+                BorderWidth="2"
+                HeightRequest="40"
+                BackgroundColor="#ffffff"
+                Text="Logout" 
+                Command="{Binding Logout}"/>
+      </Grid>
+    </StackLayout>
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:chatUi="clr-namespace:Telerik.XamarinForms.ConversationalUI;assembly=Telerik.XamarinForms.ConversationalUI"
+             xmlns:primitives="clr-namespace:Telerik.XamarinForms.Primitives;assembly=Telerik.XamarinForms.Primitives"
+             x:Class="Pact.App.Core.Views.AssistedLoginPage">
+  <primitives:RadBusyIndicator AnimationContentHeightRequest="50"
+                               AnimationContentWidthRequest="50"
+                               AnimationContentColor="#6d91c7"
+                               IsBusy="{Binding IsBusy}" >
+    <chatUi:RadChat ItemsSource="{Binding Messages}" x:Name="Chat" VerticalOptions="FillAndExpand" ItemTemplateSelector="{StaticResource ChatTemplateSelector}" BackgroundColor="White">
+      <chatUi:RadChat.Picker>
+        <chatUi:RadChatPicker Context="{Binding PickerContext}"
+                              IsVisible="True"
+                              TemplateSelector="{StaticResource PickerTemplateSelector}"
+                              IsOkButtonVisible="False"
+                              IsCancelButtonVisible="False"     
+                              VerticalOptions="End"
+                              BackgroundColor="White" />
+      </chatUi:RadChat.Picker>
+      <chatUi:RadChat.TypingIndicator>
+        <chatUi:TypingIndicator ItemsSource="{Binding TypingAuthors}" />
+      </chatUi:RadChat.TypingIndicator>
+
+      <primitives:RadPopup.Popup>
+      <primitives:RadPopup IsModal="True"
+                           IsOpen="{Binding ShowSeedNotice}"
+                           Placement="Center"
+                           OutsideBackgroundColor="#6F000000">
+          <primitives:RadBorder CornerRadius="8" BackgroundColor="#6384b5" >
+          <Grid Padding="20">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="30" />
+              <RowDefinition Height="20" />
+              <RowDefinition Height="40" />
+            </Grid.RowDefinitions>
+            <Label TextColor="White" Grid.Row="0" Text="Below you can find your seed! (I need to be styled and have a QR / print seed feature)" />
+            <Label TextColor="White" Grid.Row="1" Text="{Binding Seed}" />
+            <Button Grid.Row="2"
+                    TextColor="White"
+                    Padding="2"
+                    HorizontalOptions="End" 
+                    Text="OK"
+                    Command="{Binding SeedNotice}"/>
+          </Grid>
+        </primitives:RadBorder>
+      </primitives:RadPopup>
+    </primitives:RadPopup.Popup>
+
+    </chatUi:RadChat>
+  </primitives:RadBusyIndicator>
+</ContentPage>
