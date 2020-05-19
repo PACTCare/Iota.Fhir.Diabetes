@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.4" />
     <PackageReference Include="Pact.Fhir.Core" Version="0.0.4.2" />
     <PackageReference Include="Pact.Fhir.Core.SqlLite" Version="0.0.4.5" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.111" />
